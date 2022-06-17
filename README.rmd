@@ -1,0 +1,52 @@
+---
+output:
+  md_document:
+    variant: markdown_github
+---
+
+# Purpose
+
+Purpose of this work folder.
+
+Ideally store a minimum working example data set in data folder.
+
+Add binary files in bin, and closed R functions in code. Human Readable settings files (e.g. csv) should be placed in settings/
+
+
+```{r}
+
+rm(list = ls()) # Clean your environment:
+gc() # garbage collection - It can be useful to call gc after a large object has been removed, as this may prompt R to return memory to the operating system.
+library(tidyverse)
+list.files('code/', full.names = T, recursive = T) %>% .[grepl('.R', .)] %>% as.list() %>% walk(~source(.))
+```
+
+```{r}
+rm(list = ls()) # Clean your environment:
+gc() # garbage collection - It can be useful to call gc after a large object has been removed, as this may prompt R to return memory to the operating system.
+library(tidyverse)
+list.files('code/', full.names = T, recursive = T) %>% .[grepl('.R', .)] %>% as.list() %>% walk(~source(.))
+```
+
+```{r}
+
+library(tidyverse)
+list.files('code/', full.names = T, recursive = T) %>% .[grepl('.R', .)] %>% as.list() %>% walk(~source(.))
+
+
+# create a project
+fmxdat::make_project(Open = T)
+# File path = "C:/Masters Economics/Semester 1/Data Science/Practical Test"
+# on the clipboard
+
+# create folders for each Question
+Texevier::create_template(directory = "C:/Masters Economics/Semester 1/Data Science/Practical2022/23365935",
+                template_name = "Question1", build_project = TRUE, open_project = TRUE)
+Texevier::create_template(directory = "C:/Masters Economics/Semester 1/Data Science/Practical2022/23365935",
+                template_name = "Question2", build_project = TRUE, open_project = TRUE)
+Texevier::create_template(directory = "C:/Masters Economics/Semester 1/Data Science/Practical2022/23365935",
+                template_name = "Question3", build_project = TRUE, open_project = TRUE)
+Texevier::create_template(directory = "C:/Masters Economics/Semester 1/Data Science/Practical2022/23365935",
+                template_name = "Question4", build_project = TRUE, open_project = TRUE)
+```
+

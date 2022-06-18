@@ -19,7 +19,7 @@ df_q5.2_data <- df_google %>% select(Category, Price, Installs, Size) %>%
     mutate(Revenue = Price*Installs) %>%
     arrange(Revenue, .by_group = F) %>%
     group_by(Category) %>%
-    summarise_at(vars(c(Price, Installs, Revenue, Size)), mean)
+    #summarise_at(vars(c(Price, Installs, Revenue, Size)), mean)
 
 
 df_q5.2_data %>% kbl(align = "c", caption = "Summary of Mean Application Statistics per Catergory",

@@ -178,7 +178,9 @@ graph_q3.2_func(df_data = df_q3.2_data,
 From the table of reported statistics of the past 25 years one can see that 1st serve in percentage of male tennis players has increase steadily over the years. In addition to 1st serve in percentage, other averages are reported here. Most notably, the average height of winning male tennis players has been increasing over the past 25 years, as if to suggest that taller players win more often. However, it is far more likely that this is a result of more taller male players making it onto the pro circuit than before.
 
 ```{r}
-#Q3_table_func(df_data)
+
+t <- Q3_table_func(dff_data)
+t
 ```
 
 
@@ -191,12 +193,12 @@ From the graph below, one can see that the three categories of applications with
 ```{r fig.height= 7}
 
 # Use function to creat graph
-#graph_q5.1_func(df_data = df_q5.1_data,
-                # title = "Google Application Revenue",
-                # subtitle = "by Catergory",
-                # caption = "",
-                # xlabel = "Categories",
-                # ylabel = "Revenue")
+graph_q5.1_func(df_data = df_q5.1_data,
+                title = "Google Application Revenue",
+                subtitle = "by Catergory",
+                caption = "",
+                xlabel = "Categories",
+                ylabel = "Revenue")
 
 ```
 
@@ -204,9 +206,9 @@ From the graph below, one can see that the three categories of applications with
 
 The table below, displays the mean statistics of price, number of installs, revenue, size per category. In terms of average price, the three most expensive categories are Finance, Lifestyle and Events.
 
-```{r}
+```{r message=FALSE, warning=FALSE, error=TRUE}
 # print table function
-#Q5_table_func(df_data)
-
+t <- Q5_table_func(df_data)
+t
 ```
 

@@ -15,8 +15,9 @@ df_q5.1_data <- df_google %>% select(Category, Price, Installs) %>%
     mutate(Price = as.numeric(gsub("[$]","", Price))) %>% # remove $ by subsituting it for nothing
     mutate(Revenue = Price*Installs) %>%
     arrange(Revenue, .by_group = F) %>%
-    group_by(Category) %>%
-    summarise_at(vars(c(Price, Installs, Revenue)), mean)
+    select(Category, Price, Installs, Revenue) %>%
+    group_by(Category) #%>%
+    #summarise_at(vars(c(Price, Installs, Revenue)), mean)
 
 # plot_orderset <- function(df, Column, Order){
 #
@@ -51,9 +52,3 @@ graph
 }
 
 
-graph_q5.1_func(df_data = df_q5.1_data,
-                title = "Google Application Revenue",
-                subtitle = "by Catergory",
-                caption = "",
-                xlabel = "Categories",
-                ylabel = "Revenue")

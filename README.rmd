@@ -1,16 +1,12 @@
 ---
-output:
+output: "Pratical Test 2022"
   md_document:
     variant: markdown_github
 ---
 
 # Purpose
 
-Purpose of this work folder.
-
-Ideally store a minimum working example data set in data folder.
-
-Add binary files in bin, and closed R functions in code. Human Readable settings files (e.g. csv) should be placed in settings/
+Purpose of this markdown to display all of the code.
 
 
 ```{r}
@@ -23,10 +19,6 @@ list.files('code/', full.names = T, recursive = T) %>% .[grepl('.R', .)] %>% as.
 
 
 ```{r}
-
-library(tidyverse)
-list.files('code/', full.names = T, recursive = T) %>% .[grepl('.R', .)] %>% as.list() %>% walk(~source(.))
-
 
 # create a project
 fmxdat::make_project(Open = T)
@@ -42,5 +34,34 @@ Texevier::create_template(directory = "C:/Masters Economics/Semester 1/Data Scie
                 template_name = "Question3", build_project = TRUE, open_project = TRUE)
 Texevier::create_template(directory = "C:/Masters Economics/Semester 1/Data Science/Practical2022/23365935",
                 template_name = "Question4", build_project = TRUE, open_project = TRUE)
+```
+
+
+# Question 5
+
+Application Categories that Generate the most Revenue.
+
+From the graph below, one can see that the three categories of applications with the largest revenues on the Google Store are Lifestyle, Finance and Photography. This is likely due to the fact that these applications would appeal to the most users. I would issue caution, when considering developing a new app in any of these three categories as there is a large amount of competition and a new app may struggle to gain traction with incumbent apps having the first mover advantage.
+
+```{r fig.height= 7}
+
+# Use function to creat graph
+graph_q5.1_func(df_data = df_q5.1_data,
+                title = "Google Application Revenue",
+                subtitle = "by Catergory",
+                caption = "",
+                xlabel = "Categories",
+                ylabel = "Revenue")
+
+```
+
+\newpage
+
+The table below, displays the mean statistics of price, number of installs, revenue, size per category. In terms of average price, the three most expensive categories are Finance, Lifestyle and Events.
+
+```{r}
+# print table function
+Q5_table_func(df_data)
+
 ```
 

@@ -8,9 +8,11 @@ output:
 
 Purpose of this markdown to display the results of the practical.
 
+I began by creating a project and templates with code in the setup chunk.
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = FALSE, message = FALSE, warning = FALSE, fig.width = 6, fig.height = 5, fig.pos="H", fig.pos = 'H')
+
 # # create a project
 # fmxdat::make_project(Open = T)
 # # File path = "C:/Masters Economics/Semester 1/Data Science/Practical Test"
@@ -45,7 +47,7 @@ list.files('code/', full.names = T, recursive = T) %>% .[grepl('.R', .)] %>% as.
 
 # Question 1
 
-See if you can provide some insights using the dataset into how African countries’ experience differed from other regions.
+This compares the number of case and deaths linked to COVID per continent. From the graph below, one can see that Europe recorder the largest number of COVID cases and deaths. This may be due to there aging population, as advanced aged is certainly linked to comorbidities, which in turn may have resulted in increased cases compared to countries with a lower mean age.
 
 ```{r warning=FALSE, fig.height= 7}
 
@@ -58,9 +60,7 @@ g <- graph_q1.1_func(df_data = df_q1.1_data,
 g
 ```
 
-
-Provide some insights into whether countries with specific concentrated groupings (e.g. more
-poverty, higher prevalence of smokers, higher general life expectancy and elderly populations) displayed distinct patterns in the severity of their Covid experience.
+This bar graph plots number of ICU patients and levels of poverty for the 10 poorest and 10 least poor countries as per extreme poverty. On average, countries with lower levels of poverty had comparatively fewer ICU patients that their wealthier counter parts. This is most like sue to a lake of ICU facilities in poorer countries. And had poorer had similar resources, there number of ICU patients would be very similar.
 
 ```{r}
 g <- graph_q1.2_func(df_data = df_q1.2_data,
@@ -74,8 +74,8 @@ g
 ```
 
 
-Show how quickly different regions increased their hospitalization facilities, and whether
-this led or lagged ICU admissions.
+The graphs below plots how the number of hospital beds and number of ICU admissions change will the onset of the pandemic per continent. From the graph, it appears that all continents lagged behind ICU admissions in increasing their hospitalization facilities. All except for Asia, who appear to have been able to make more facilities available quickly compared to the other continents. 
+
 
 ```{r}
 graph_q1.3_func(df_data = df_q1.3_data,

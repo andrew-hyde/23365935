@@ -16,8 +16,8 @@ df_q5.1_data <- df_google %>% select(Category, Price, Installs) %>%
     mutate(Revenue = Price*Installs) %>%
     arrange(Revenue, .by_group = F) %>%
     select(Category, Price, Installs, Revenue) %>%
-    group_by(Category) #%>%
-    #summarise_at(vars(c(Price, Installs, Revenue)), mean)
+    group_by(Category) %>%
+    dmap(mean)
 
 # plot_orderset <- function(df, Column, Order){
 #

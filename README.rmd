@@ -1,67 +1,212 @@
 ---
-output: "Pratical Test 2022"
+output:
   md_document:
     variant: markdown_github
 ---
 
 # Purpose
 
-Purpose of this markdown to display all of the code.
+Purpose of this markdown to display the results of the practical.
 
 
-```{r}
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE, message = FALSE, warning = FALSE, fig.width = 6, fig.height = 5, fig.pos="H", fig.pos = 'H')
+# # create a project
+# fmxdat::make_project(Open = T)
+# # File path = "C:/Masters Economics/Semester 1/Data Science/Practical Test"
+# # on the clipboard
+# 
+# # create folders for each Question
+# Texevier::create_template(directory = "C:/Masters Economics/Semester 1/Data Science/Practical2022/23365935",
+#                 template_name = "Question1", build_project = TRUE, open_project = TRUE)
+# Texevier::create_template(directory = "C:/Masters Economics/Semester 1/Data Science/Practical2022/23365935",
+#                 template_name = "Question2", build_project = TRUE, open_project = TRUE)
+# Texevier::create_template(directory = "C:/Masters Economics/Semester 1/Data Science/Practical2022/23365935",
+#                 template_name = "Question3", build_project = TRUE, open_project = TRUE)
+# Texevier::create_template(directory = "C:/Masters Economics/Semester 1/Data Science/Practical2022/23365935",
+#                 template_name = "Question4", build_project = TRUE, open_project = TRUE)
+# 
 
-rm(list = ls()) # Clean your environment:
-gc() # garbage collection - It can be useful to call gc after a large object has been removed, as this may prompt R to return memory to the operating system.
+df_covid <- read.csv("C:/Masters Economics/Semester 1/Data Science/Practical2022/23365935/Question1/data/Covid/owid-covid-data.csv")
+
+df_london <- read.csv("C:/Masters Economics/Semester 1/Data Science/Practical2022/23365935/Question2/data/London/london_weather.csv")
+
+
+
+df_google <- read.csv("C:/Masters Economics/Semester 1/Data Science/Practical2022/23365935/Question5/data/googleplay/googleplaystore.csv")
+
+# # Source Functions
 library(tidyverse)
+#list.files('..//Question5/code/', full.names = T, recursive = T) %>% as.list() %>% walk(~source(.))
+
 list.files('code/', full.names = T, recursive = T) %>% .[grepl('.R', .)] %>% as.list() %>% walk(~source(.))
+
+```
+
+# Question 1
+
+See if you can provide some insights using the dataset into how African countries’ experience differed from other regions.
+
+```{r warning=FALSE, fig.height= 7}
+
+g <- graph_q1.1_func(df_data = df_q1.1_data,
+                title = "Covid Cases and Deaths",
+                subtitle = "Plot of Total Cases and Deaths per Continent",
+                caption = "Data Source: Our World in Data",
+                xlabel = "Continent",
+                ylabel = "Per Million")
+g
 ```
 
 
+Provide some insights into whether countries with specific concentrated groupings (e.g. more
+poverty, higher prevalence of smokers, higher general life expectancy and elderly populations) displayed distinct patterns in the severity of their Covid experience.
+
+```{r}
+g <- graph_q1.2_func(df_data = df_q1.2_data,
+                title = "Covid ",
+                subtitle = "Plot of  Continent",
+                caption = "Data Source: Our World in Data",
+                xlabel = "Country",
+                ylabel = "")
+g
+
+```
+
+
+Show how quickly different regions increased their hospitalization facilities, and whether
+this led or lagged ICU admissions.
+
+```{r}
+graph_q1.3_func(df_data = df_q1.3_data,
+                title = "Number of ICU Patients per million and Hospital Beds per thousand over time",
+                subtitle = "per Continent",
+                caption = "Data Source: Our World in Data",
+                xlabel = "Continent",
+                ylabel = "")
+```
+
+Question 2: Reasons not to go to London
+
+## Low Average Temperature
+
+London experiences lower average temperatures than South Africa. From the graph below, the average temperature in London has consistently fluctuates around 10 °C for over four decades.
+
+
+```{r}
+graph_q2.1_jitter_boxplot(df_data = df_q2.1_data,
+                title = "Temperature over Time: London",
+                subtitle = "Minimum and Maximum Temperature from 1979 to 2020",
+                caption = "Data Source: UK National Weather Service ",
+                xlabel = "Year",
+                ylabel = "Temperature")
+
+```
+
+
+## Few Hours of Sunlight per Month
+
+London experiences very few hours of sunlight per month. In the last five years, the month with most number of hours of sunlight was May 2020, with approximately 330 hours in that month. On average, that is less than two hours of sunlight per day.
+
+```{r}
+graph_q2.2_func(df_data = df_q2.2_data,
+                          title = "Hours of Sun in London over the last 5 years",
+                          subtitle = "Hours of sun per month from 2016 to 2020",
+                          caption = "Data Source: UK National Weather Service ",
+                          xlabel = "year",
+                          ylabel = "Hours of Sun")
+```
+
+
+## It rains more than half the time
+
+Consider the pie chart below, in 2020 it rained more than half the days in that year. In London there were at least 186 of rain, comparatively, Cape Town received 111 days of rain.
+
+```{r}
+graph_q2.3_func(df_data = df_q2.3_data,
+                title = "Rain in London in 2020",
+                subtitle = "The percentage of days with and without rain",
+                caption = "Data Source: UK National Weather Service ",
+                xlabel = "",
+                ylabel = "")
+
+```
+
+
+# Question 3: Interesting Tennis Statistics
+
+Nadal vs Djokovic: Aces and Doubles Faults in Grand Slam Finals.
+
+Both Rafael Nadal and Novak Djokovic have won at least 20 Grand Slams. The two graphs below shed some light on the there consistency in on the biggest stage. Both players have performed incredible well over the past years, but in Grand Slam Finals matches fine margins determine champions given the 5 set structure and the strength of opponent that reaches a final. Both players have recorded very few double faults in their finals wins, which is remarkable given the stage, pressure, and duration. And on average will serve more aces than doubles faults in the match. Djokovic even more impressively, has need serve more double faults than aces in any of this finals wins.
+
 ```{r}
 
-# create a project
-fmxdat::make_project(Open = T)
-# File path = "C:/Masters Economics/Semester 1/Data Science/Practical Test"
-# on the clipboard
+df_tennis = data_collater(data_directory = "data/Tennis/")
 
-# create folders for each Question
-Texevier::create_template(directory = "C:/Masters Economics/Semester 1/Data Science/Practical2022/23365935",
-                template_name = "Question1", build_project = TRUE, open_project = TRUE)
-Texevier::create_template(directory = "C:/Masters Economics/Semester 1/Data Science/Practical2022/23365935",
-                template_name = "Question2", build_project = TRUE, open_project = TRUE)
-Texevier::create_template(directory = "C:/Masters Economics/Semester 1/Data Science/Practical2022/23365935",
-                template_name = "Question3", build_project = TRUE, open_project = TRUE)
-Texevier::create_template(directory = "C:/Masters Economics/Semester 1/Data Science/Practical2022/23365935",
-                template_name = "Question4", build_project = TRUE, open_project = TRUE)
+graph_q3.1a_func(df_data = df_q3.1a_data,
+                title = "Djokovic: Consistency of Serve in Winning Grand Slam Finals ",
+                subtitle = "Aces and Double Faults",
+                caption = " ",
+                xlabel = "Grand Slam Finals",
+                ylabel = "Number Aces or Faults")
+
+graph_q3.1b_func(df_data = df_q3.1b_data,
+                title = "Nadal: Consistency of Serve in Winning Grand Slam Finals ",
+                subtitle = "Aces and Double Faults",
+                caption = " ",
+                xlabel = "Grand Slam Finals",
+                ylabel = "Number Aces or Faults")
+```
+
+1ST Serve Percentage: Gland Slam vs Masters 1000s
+
+The graph below sets out to answer the question, do winning male tennis players have a better or worse 1st serve in percentage on a bigger stage, i.e. a Grand Slam, and has this been the case over time. From the graph, the difference between 1st serve in percentage during a Grand Slam (best of 5 sets) or Masters 1000 (best of 3 sets) tournament, appears to reasonably even. However, there does seem to be a slight improvement for both tournaments over time. Lets investigate this further.
+
+```{r}
+
+graph_q3.2_func(df_data = df_q3.2_data,
+                title = "Percentage of 1st Serves In: Gland Slam vs Masters 1000s ",
+                subtitle = "Plot Comparing 1st Serve Percentage for All Male Players when winning matches (1990 - 2022)",
+                caption = " ",
+                xlabel = "Year",
+                ylabel = "Percentage of 1st Serve In (%)")
+
+
+
+```
+
+From the table of reported statistics of the past 25 years one can see that 1st serve in percentage of male tennis players has increase steadily over the years. In addition to 1st serve in percentage, other averages are reported here. Most notably, the average height of winning male tennis players has been increasing over the past 25 years, as if to suggest that taller players win more often. However, it is far more likely that this is a result of more taller male players making it onto the pro circuit than before.
+
+```{r}
+#Q3_table_func(df_data)
 ```
 
 
 # Question 5
 
-Application Categories that Generate the most Revenue.
+Application Categories that generate the most Revenue.
 
 From the graph below, one can see that the three categories of applications with the largest revenues on the Google Store are Lifestyle, Finance and Photography. This is likely due to the fact that these applications would appeal to the most users. I would issue caution, when considering developing a new app in any of these three categories as there is a large amount of competition and a new app may struggle to gain traction with incumbent apps having the first mover advantage.
 
 ```{r fig.height= 7}
 
 # Use function to creat graph
-graph_q5.1_func(df_data = df_q5.1_data,
-                title = "Google Application Revenue",
-                subtitle = "by Catergory",
-                caption = "",
-                xlabel = "Categories",
-                ylabel = "Revenue")
+#graph_q5.1_func(df_data = df_q5.1_data,
+                # title = "Google Application Revenue",
+                # subtitle = "by Catergory",
+                # caption = "",
+                # xlabel = "Categories",
+                # ylabel = "Revenue")
 
 ```
 
-\newpage
+
 
 The table below, displays the mean statistics of price, number of installs, revenue, size per category. In terms of average price, the three most expensive categories are Finance, Lifestyle and Events.
 
 ```{r}
 # print table function
-Q5_table_func(df_data)
+#Q5_table_func(df_data)
 
 ```
 

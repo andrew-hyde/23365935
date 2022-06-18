@@ -135,20 +135,6 @@
 \IfFileExists{upquote.sty}{\usepackage{upquote}}{}
 
 %%% Include extra packages specified by user
-\usepackage{booktabs}
-\usepackage{longtable}
-\usepackage{array}
-\usepackage{multirow}
-\usepackage{wrapfig}
-\usepackage{float}
-\usepackage{colortbl}
-\usepackage{pdflscape}
-\usepackage{tabu}
-\usepackage{threeparttable}
-\usepackage{threeparttablex}
-\usepackage[normalem]{ulem}
-\usepackage{makecell}
-\usepackage{xcolor}
 
 %%% Hard setting column skips for reports - this ensures greater consistency and control over the length settings in the document.
 %% page layout
@@ -183,7 +169,7 @@
 
 \begin{frontmatter}  %
 
-\title{Helping You Write Academic Papers in R using Texevier}
+\title{Question 2: London Weather}
 
 % Set to FALSE if wanting to remove title (for submission)
 
@@ -191,8 +177,8 @@
 
 
 \author[Add1]{Andrew Hyde\footnote{\textbf{Contributions:}
-  \newline \emph{The authors would like to thank no institution for
-  money donated to this project. Thank you sincerely.}}}
+  \newline \emph{The author would like to thank Nico Katzke for this
+  template.}}}
 \ead{}
 
 
@@ -201,12 +187,13 @@
 
 
 \cortext[cor]{Corresponding author: Andrew Hyde\footnote{\textbf{Contributions:}
-  \newline \emph{The authors would like to thank no institution for
-  money donated to this project. Thank you sincerely.}}}
+  \newline \emph{The author would like to thank Nico Katzke for this
+  template.}}}
 
 \begin{abstract}
 \small{
-Abstract .
+Reasons not to go to London according to data from UK National Weather
+Service.
 }
 \end{abstract}
 
@@ -227,7 +214,7 @@ Abstract .
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \pagestyle{fancy}
 \chead{}
-\rhead{}
+\rhead{Its Always Sunny in South Africa}
 \lfoot{}
 \rfoot{\footnotesize Page \thepage}
 \lhead{}
@@ -243,46 +230,43 @@ Abstract .
 
 
 
-\hypertarget{introduction}{%
-\section{\texorpdfstring{Introduction
-\label{Introduction}}{Introduction }}\label{introduction}}
+\hypertarget{reasons-not-to-go-to-london}{%
+\section{Reasons not to go to
+London}\label{reasons-not-to-go-to-london}}
+
+\hypertarget{low-average-temperature}{%
+\subsection{Low Average Temperature}\label{low-average-temperature}}
+
+London experiences lower average temperatures than South Africa. From
+the graph below, the average temperature in London has consistently
+fluctuates around 10 °C for over four decades.
 
 \includegraphics{Question2_files/figure-latex/unnamed-chunk-1-1.pdf}
 
+\newpage
+
+\hypertarget{few-hours-of-sunlight-per-month}{%
+\subsection{Few Hours of Sunlight per
+Month}\label{few-hours-of-sunlight-per-month}}
+
+London experiences very few hours of sunlight per month. In the last
+five years, the month with most number of hours of sunlight was May
+2020, with approximately 330 hours in that month. On average, that is
+less than two hours of sunlight per day.
+
 \includegraphics{Question2_files/figure-latex/unnamed-chunk-2-1.pdf}
 
-\begin{table}
+\newpage
 
-\caption{\label{tab:unnamed-chunk-3}Descriptive Statistics}
-\centering
-\begin{tabular}[t]{c|c}
-\hline
-\multicolumn{2}{c}{ } \\
+\hypertarget{it-rains-more-than-half-the-time}{%
+\subsection{It rains more than half the
+time}\label{it-rains-more-than-half-the-time}}
 
-Dates & Mean\\
-\hline
-\cellcolor{gray!6}{2011} & \cellcolor{gray!6}{1540.1}\\
-\hline
-2012 & 1499.2\\
-\hline
-\cellcolor{gray!6}{2013} & \cellcolor{gray!6}{1452.4}\\
-\hline
-2014 & 1668.4\\
-\hline
-\cellcolor{gray!6}{2015} & \cellcolor{gray!6}{1507.7}\\
-\hline
-2016 & 1473.7\\
-\hline
-\cellcolor{gray!6}{2017} & \cellcolor{gray!6}{1452.0}\\
-\hline
-2018 & 1704.8\\
-\hline
-\cellcolor{gray!6}{2019} & \cellcolor{gray!6}{1546.1}\\
-\hline
-2020 & 1834.5\\
-\hline
-\end{tabular}
-\end{table}
+Consider the pie chart below, in 2020 it rained more than half the days
+in that year. In London there were at least 186 of rain, comparatively,
+Cape Town received 111 days of rain.
+
+\includegraphics{Question2_files/figure-latex/unnamed-chunk-3-1.pdf}
 
 \bibliography{Tex/ref}
 

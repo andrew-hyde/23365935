@@ -10,45 +10,57 @@ output:
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = F, message = FALSE, warning = FALSE)
 
+# Source All functions
 library(tidyverse)
 list.files('code/', full.names = T, recursive = T) %>% .[grepl('.R', .)] %>% as.list() %>% walk(~source(.))
 
 # READ in multiple csv files
 df_tennis = data_collater(data_directory = "data/Tennis/")
-
 ```
 
-Nadal vs Djokovic: Aces and Doubles Faults in Grand Slam Finals
+# Interesting Tennis Statistics
+
+Nadal vs Djokovic: Aces and Doubles Faults in Grand Slam Finals.
+
+Both Rafael Nadal and Novak Djokovic have won at least 20 Grand Slams. The two graphs below shed some light on the there consistency in on the biggest stage. Both players have performed incredible well over the past years, but in Grand Slam Finals matches fine margins determine champions given the 5 set structure and the strength of opponent that reaches a final. Both players have recorded very few double faults in their finals wins, which is remarkable given the stage, pressure, and duration. And on average will serve more aces than doubles faults in the match. Djokovic even more impressively, has need serve more double faults than aces in any of this finals wins.
+
 
 ```{r}
 graph_q3.1a_func(df_data = df_q3.1a_data,
                 title = "Djokovic: Consistency of Serve in Winning Grand Slam Finals ",
-                subtitle = "",
+                subtitle = "Aces and Double Faults",
                 caption = " ",
                 xlabel = "Grand Slam Finals",
                 ylabel = "Number Aces or Faults")
 
 graph_q3.1b_func(df_data = df_q3.1b_data,
                 title = "Nadal: Consistency of Serve in Winning Grand Slam Finals ",
-                subtitle = "",
+                subtitle = "Aces and Double Faults",
                 caption = " ",
                 xlabel = "Grand Slam Finals",
                 ylabel = "Number Aces or Faults")
 ```
+\newpage
+1ST Serve Percentage: Gland Slam vs Masters 1000s
+
+The graph below sets out to answer the question, do winning male tennis players have a better or worse 1st serve in percentage on a bigger stage, i.e. a Grand Slam, and has this been the case over time. From the graph, the difference between 1st serve in percentage during a Grand Slam (best of 5 sets) or Masters 1000 (best of 3 sets) tournament, appears to reasonably even. However, there does seem to be a slight improvement for both tournaments over time. Lets investigate this further.
 
 
 ```{r}
 
 graph_q3.2_func(df_data = df_q3.2_data,
                 title = "Percentage of 1st Serves In: Gland Slam vs Masters 1000s ",
-                subtitle = "Plot Comparing 1st Serve Percentage for All Players when winning matches (1990 - 2022)",
+                subtitle = "Plot Comparing 1st Serve Percentage for All Male Players when winning matches (1990 - 2022)",
                 caption = " ",
                 xlabel = "Year",
                 ylabel = "Percentage of 1st Serve In (%)")
 
 
-
 ```
+\newpage
+
+From the table of reported statistics of the past 25 years one can see that 1st serve in percentage of male tennis players has increase steadily over the years. In addition to 1st serve in percentage, other averages are reported here. Most notably, the average height of winning male tennis players has been increasing over the past 25 years, as if to suggest that taller players win more often. However, it is far more likely that this is a result of more taller male players making it onto the pro circuit than before.
+
 
 ```{r}
 Q3_table_func(df_data)
